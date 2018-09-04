@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+    // Notes:
+    // cannot redeclare let in the same scope
+    const key = 'acb123';
+    var points = 50;
+    let winner = false;
+
+    if (points > 40) {
+        winner = true;
+    }
+
+    const person = {
+        name: 'Eric',
+        age: 28
+    }
+
+    // This throws an error
+    // person = {name: 'Fatima' }
+
+    // But this is OK
+    // person.name = 'Marty'
+
+    // You can freeze an object to make it immutable
+    // but it updates to members vars fail silently
+    const eric = Object.freeze(person);
+    
+</script>
+</body>
+</html>
