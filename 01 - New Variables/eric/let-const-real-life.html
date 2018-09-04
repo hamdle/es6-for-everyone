@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+</head>
+<body>
+<script>
+    // IIFE (if-ee)
+    (function() {
+        var name = "eric";
+        console.log(name);
+    })();
+
+    // Same thing using const
+    // no need to use IFEE
+    {
+        const name = "marty";
+        console.log(name);
+    }
+
+    // Creates a global variable named i
+    // that has leaked out
+    for (var i = 0; i < 10; i++) {
+        console.log(i);
+        setTimeout(function() {
+            console.log('var ' + i);
+        }, 1000);
+    }
+
+    // Fixes scope issue
+    for (let n = 0; n < 10; n++) {
+        console.log(n);
+        setTimeout(function() {
+            console.log('var ' + n);
+        }, 1000);
+    }
+</script>
+</body>
+</html>
