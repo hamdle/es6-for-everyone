@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>When _not_ to use arrows =></title>
+</head>
+<body>
+<style>
+  button { font-size: 100px; }
+  .on { background: #ffc600; }
+</style>
+<button id="pushy">Push Me</button>
+
+<script>
+  // When you really need `this`
+  const button = document.querySelector('#pushy');
+  button.addEventListener('click', function() {
+    console.log(this);
+    this.classList.toggle('on');
+  });
+
+  // When you need a method to bind to an object
+  const person = {
+    points: 23,
+    // When you have a method on an object
+    // you can use the new ES6 way
+    //score: function() {
+    score() {
+      console.log(this)
+      this.points++;
+    }
+  }
+
+  // Car example
+  class Car {
+    constructor(make, color) {
+      this.make = make;
+      this.color = color;
+    }
+  }
+
+  const bee = new Car('bmw', 'blue');
+  const sub = new Car('subaru', 'white');
+
+  Car.prototype.sum = function() {
+    return `${this.make} is ${this.color}`;
+  };
+
+  // Arguments keyword does not work with arrow function
+  // const orderChildren = () => {
+  const orderChildren = function() {
+    const children = Array.from(arguments);
+    return children.map((child, i) => {
+      return `${child} was child #${i + 1}`;
+    })
+    console.log(arguments);
+  }
+
+
+</script>
+</body>
+</html>
