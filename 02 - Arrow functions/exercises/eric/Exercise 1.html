@@ -31,23 +31,37 @@
 
 <script>
 
+    // My try
     const arr = document.querySelectorAll("li");
     console.log(arr);
+    let total = 0;
 
     arr.forEach(element => {
-        const x = element.getAttribute("data-time");
-        console.log();
+        const times = element.getAttribute("data-time").split(":");
+        total += Number(times[0] * 60) + Number(times[1]);
+        //console.log(Number(times[0] * 60) + Number(times[1]));
     });
 
+    console.log(total);
+
+    // My try using comments
   // Select all the list items on the page and convert to array
-
+  const arr2 = Array.from(document.querySelectorAll("li"));
+  console.log(arr2);
   // Filter for only the elements that contain the word 'flexbox'
-
+  const arr3 = arr2.filter(elem => elem.innerHTML.includes("Flexbox"));
   // map down to a list of time strings
-
+    const arr4 = arr3.map(elem => {
+        const t = elem.getAttribute("data-time").split(":");
+        return parseInt(t[0]) * 60 + parseInt(t[1]);
+    });
+    console.log(arr4);
   // map to an array of seconds
 
   // reduce to get total
+  const reduceTotal = (accum, curValue) => accum + curValue;
+  const result = arr4.reduce(reduceTotal);
+  console.log(result);
 
   // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
